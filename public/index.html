@@ -4,9 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Millo - ボクセル・アクション</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    // All asset/API paths are relative so the app also works under a sub path
+    // (e.g. https://example.com/millo/). Make sure the URL ends with "/".
+    if (!location.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(location.pathname))
+      location.replace(location.pathname + '/' + location.search + location.hash);
+  </script>
+  <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 1l5 7-5 7-5-7z' fill='%23ffd23f'/></svg>">
-  <script type="importmap">{ "imports": { "three": "/vendor/three/three.module.js" } }</script>
+  <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.js" } }</script>
 </head>
 <body data-mode="menu">
   <canvas id="game"></canvas>
@@ -69,6 +75,6 @@
     </div>
   </div>
 
-  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

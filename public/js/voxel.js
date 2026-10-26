@@ -1,6 +1,6 @@
 // Voxel meshing, voxel world container, ray casting and AABB collision.
 import * as THREE from 'three';
-import { BLOCKS, decodeBlocks, encodeBlocks } from '/shared/world.js';
+import { BLOCKS, decodeBlocks, encodeBlocks } from '../shared/world.js';
 
 // ---- face tables -------------------------------------------------------
 // Each face: normal, two tangent axes and the 4 corners (unit cube coords).

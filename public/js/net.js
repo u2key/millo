@@ -13,8 +13,11 @@ export class NetSession {
   }
 
   connect() {
-    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
-    const ws = (this.ws = new WebSocket(`${proto}://${location.host}/ws?token=${encodeURIComponent(getToken() || '')}`));
+    // relative to the page so it also works behind a reverse proxy sub path
+    const url = new URL('ws', document.baseURI);
+    url.protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+    url.searchParams.set('token', getToken() || '');
+    const ws = (this.ws = new WebSocket(url));
     ws.onopen = () => {
       ws.send(JSON.stringify({ t: 'join', worldId: this.worldId, avatar: this.avatar }));
       this.onEvent({ t: 'status', online: true });

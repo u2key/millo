@@ -1,5 +1,5 @@
 // Converts uploaded images / STL files into voxel models.
-import { MODEL_GRID } from '/shared/world.js';
+import { MODEL_GRID } from '../shared/world.js';
 
 const [GX, GY, GZ] = MODEL_GRID;
 

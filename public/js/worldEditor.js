@@ -1,6 +1,6 @@
 // World editor: voxel building, entity placement, world settings, test play.
 import * as THREE from 'three';
-import { BLOCKS, ENEMY_TYPES, SKIES, LIMITS, randomId, validateWorld, encodeBlocks } from '/shared/world.js';
+import { BLOCKS, ENEMY_TYPES, SKIES, LIMITS, randomId, validateWorld, encodeBlocks } from '../shared/world.js';
 import { VoxelWorld, raycastVoxels } from './voxel.js';
 import { buildCharacter } from './rig.js';
 import { OrbitCam } from './orbit.js';

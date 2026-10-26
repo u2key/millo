@@ -1,5 +1,5 @@
 // Built-in voxel characters. All designs are original to this project.
-import { MODEL_GRID } from '/shared/world.js';
+import { MODEL_GRID } from '../shared/world.js';
 
 function V() {
   const map = new Map();

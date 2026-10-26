@@ -1,6 +1,6 @@
 // Voxel character editor (place / erase / paint), with image & STL import and joint preview.
 import * as THREE from 'three';
-import { MODEL_GRID } from '/shared/world.js';
+import { MODEL_GRID } from '../shared/world.js';
 import { meshCells, raycastVoxels } from './voxel.js';
 import { buildCharacter, detectJoints } from './rig.js';
 import { OrbitCam } from './orbit.js';

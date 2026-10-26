@@ -1,6 +1,6 @@
 // Gameplay: player controller, enemies, items, goal, HUD.
 import * as THREE from 'three';
-import { BLOCKS, ENEMY_TYPES } from '/shared/world.js';
+import { BLOCKS, ENEMY_TYPES } from '../shared/world.js';
 import { VoxelWorld, moveAABB, raycastVoxels, touchingBlocks } from './voxel.js';
 import { buildCharacter } from './rig.js';
 import { makeCrystal, makeGoal, setGoalLocked, makeCheckpoint, setCheckpointActive, makeProjectile, makeBlobShadow, setupSky } from './props.js';
