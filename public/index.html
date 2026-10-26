@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Millo - ボクセル・アクション</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 1l5 7-5 7-5-7z' fill='%23ffd23f'/></svg>">
+  <script type="importmap">{ "imports": { "three": "/vendor/three/three.module.js" } }</script>
+</head>
+<body data-mode="menu">
+  <canvas id="game"></canvas>
+  <div id="hud" hidden></div>
+  <div id="screen-ui"></div>
+
+  <section id="auth" class="screen" hidden>
+    <div class="auth-box">
+      <h1 class="logo">MILLO<span>ボクセル・アクション</span></h1>
+      <p class="muted">ブロックの世界を駆け抜けろ。ワールドを作って、みんなとタイムを競おう。</p>
+      <form id="auth-form" class="panel small" autocomplete="on">
+        <h3 id="auth-title">ログイン</h3>
+        <label class="field">名前 <input name="name" required minlength="2" maxlength="16" autocomplete="username"></label>
+        <label class="field">パスワード <input name="password" type="password" required minlength="4" autocomplete="current-password"></label>
+        <p id="auth-error" class="error"></p>
+        <button id="auth-submit" class="btn primary big" type="submit">ログイン</button>
+        <a href="#" id="auth-switch" class="small"></a>
+      </form>
+    </div>
+  </section>
+
+  <section id="hub" class="screen" hidden>
+    <header class="hub-head">
+      <h1 class="logo small">MILLO</h1>
+      <span class="grow"></span>
+      <span class="pill">👤 <b id="hub-user"></b></span>
+      <span class="pill gem-pill" title="集めたクリスタルの合計（減ることはありません）">◆ <b id="hub-items">0</b></span>
+      <button class="btn" id="btn-models">🧍 モデル工房</button>
+      <button class="btn primary" id="btn-new-world">＋ ワールドを作る</button>
+      <button class="btn icon" id="btn-help" title="操作方法">？</button>
+      <button class="btn icon" id="btn-mute" title="効果音"></button>
+      <button class="btn" id="btn-logout">ログアウト</button>
+    </header>
+    <main>
+      <p class="muted">ワールドにカーソルを合わせるとランキング、クリックで詳細を表示します。クリスタルを集めると新しいワールドが開放されます。</p>
+      <div id="world-grid" class="world-grid"></div>
+    </main>
+  </section>
+
+  <section id="avatar" class="screen" hidden></section>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+  <div id="toasts"></div>
+
+  <div id="help-modal" class="overlay modal-layer" hidden>
+    <div class="panel">
+      <button class="close" data-a="close">✕</button>
+      <h3>操作方法</h3>
+      <table class="keys">
+        <tr><th></th><th>キーボード＋マウス</th><th>ゲームパッド</th></tr>
+        <tr><td>移動</td><td>WASD / 矢印キー</td><td>左スティック / 十字キー</td></tr>
+        <tr><td>ジャンプ</td><td>Space（長押しで高く）</td><td>A / B</td></tr>
+        <tr><td>ダッシュ</td><td>Shift</td><td>X / RB / RT</td></tr>
+        <tr><td>カメラ</td><td>マウス（画面クリックでロック）/ Q・E</td><td>右スティック</td></tr>
+        <tr><td>ズーム</td><td>ホイール</td><td>LB / LT</td></tr>
+        <tr><td>ポーズ</td><td>Esc / P</td><td>Start</td></tr>
+        <tr><td>やり直し</td><td>R</td><td>Back / Select</td></tr>
+      </table>
+      <p class="muted small">敵は上から踏みつけて倒します（トゲボールは踏めません）。ボスは複数回踏む必要があります。溶岩に触れるとダメージ、ピンクのジャンプ台で大ジャンプ。中間旗に触れるとミスしても再開地点になります。</p>
+    </div>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
