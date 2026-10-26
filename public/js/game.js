@@ -59,6 +59,7 @@ export class Game {
     this.checkpoints = [];
     this.projectiles = [];
     this.runItems = new Set();
+    this.respawnItems = new Set(); // crystals held when the current respawn point was reached
     this.time = 0;
     this.deaths = 0;
     const start = this.data.entities.find((e) => e.type === 'start');
@@ -259,6 +260,7 @@ export class Game {
         cp.active = true;
         setCheckpointActive(cp.mesh, true);
         this.respawnPoint = cp.pos.clone();
+        this.respawnItems = new Set(this.runItems);
         sfx.checkpoint();
         this.showMsg('チェックポイント！');
       }
@@ -387,6 +389,13 @@ export class Game {
     P.hp = MAX_HP;
     P.inv = 1.5;
     this.playerChar.root.rotation.set(0, P.yaw, 0);
+    // crystals picked up after the respawn point are put back
+    for (const it of this.items) {
+      if (!it.taken || this.respawnItems.has(it.id)) continue;
+      it.taken = false;
+      it.mesh.visible = true;
+      this.runItems.delete(it.id);
+    }
   }
 
   // ------------------------------------------------------------------ enemies
